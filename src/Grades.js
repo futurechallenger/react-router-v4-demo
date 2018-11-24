@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
+import { withRouter } from "react-router-dom";
 
-class Grades extends React.PureComponent {
+class Grades extends React.Component {
   render() {
-    return (
-      <div>Grades</div>
-    );
+    return <div>Grades</div>;
   }
 }
 
-export default Grades;
+export default withRouter(Grades);

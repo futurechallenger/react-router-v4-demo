@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import { Link } from "react-router";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 const dark = "hsl(200, 20%, 20%)";
 const light = "#fff";
@@ -24,11 +24,7 @@ styles.activeLink = {
   color: dark
 };
 
-class Tab extends PureComponent {
-  constructor(props, context) {
-    super(props, context);
-  }
-
+class Header extends Component {
   logOut = () => {
     alert("log out");
   };
@@ -39,35 +35,38 @@ class Tab extends PureComponent {
     return (
       <div style={styles.wrapper}>
         <div style={{ float: "left" }}>
-          <Link to="/home" style={styles.link}>
+          <NavLink exact to="/home" style={styles.link}>
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
+            exact
             to="/calendar"
             style={styles.link}
             activeStyle={styles.activeLink}
           >
             Calendar
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
+            exact
             to="/grades"
             style={styles.link}
             activeStyle={styles.activeLink}
           >
             Grades
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
+            exact
             to="/messages"
             style={styles.link}
             activeStyle={styles.activeLink}
           >
             Messages
-          </Link>
+          </NavLink>
         </div>
         <div style={{ float: "right" }}>
-          <Link style={styles.link} to="/profile">
+          <NavLink exact style={styles.link} to="/profile">
             {user.name}
-          </Link>
+          </NavLink>
           <button onClick={this.logOut}>log out</button>
         </div>
       </div>
@@ -75,12 +74,11 @@ class Tab extends PureComponent {
   }
 }
 
-Tab.defaultProps = {
+Header.defaultProps = {
   user: {
     id: 1,
-    name: 'Test User',
+    name: "Test User"
   }
-}
+};
 
-export default Tab;
-
+export default Header;

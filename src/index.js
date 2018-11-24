@@ -3,33 +3,34 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+// import { MemoryRouter as Router } from "react-router";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Header from "./Header";
 import Home from "./Home";
 import About from "./About";
 import Calendar from "./Calendar";
 import Grades from "./Grades";
-import Messages from './Messages';
-import Profile from './Profile';
-
-import {
-  Router,
-  Route,
-  useRouterHistory,
-  createMemoryHistory
-} from "react-router";
-
-const history = useRouterHistory(createMemoryHistory)();
+import Messages from "./Messages";
+import Profile from "./Profile";
 
 ReactDOM.render(
-  <Router history={history}>
-    <Route path="/" component={App}>
-      <Route path="/home" component={Home} />
-      <Route path="/calendar" component={Calendar} />
-      <Route path="/grades" component={Grades} />
-			{/* <Route path="/messages" component={Messages} /> */}
-			<Route path="/messages" render={(props) => (<Messages/>)} />
-			<Route path="/profile" component={Profile} />
-      <Route path="/about" component={About} />
-    </Route>
+  <Router>
+    <div>
+      <App />
+      <div style={{ padding: 20 }}>
+        <Switch>
+          {/* <Route path="/" component={App} /> */}
+          <Route path="/home" component={Home} />
+          <Route path="/calendar" component={Calendar} />
+          <Route path="/grades" component={Grades} />
+          {/* <Route path="/messages" component={Messages} /> */}
+          <Route path="/messages" render={props => <Messages />} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </div>
+    </div>
   </Router>,
   document.getElementById("root")
 );
