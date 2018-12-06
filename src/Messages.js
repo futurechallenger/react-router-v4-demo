@@ -1,8 +1,9 @@
 import React from "react";
 
 import Title from "./Title";
+import Button from './Button';
 
-class Messages extends React.PureComponent {
+class Messages extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +35,15 @@ class Messages extends React.PureComponent {
     }, {timeout: 100});
   }
 
+  shouldComponentUpdate() {
+    console.log('===>Message - shouldComponentUpdate');
+    return true;
+  }
+
+  handleMessageClick = (message) => {
+    console.log('Message - props - handleMessageClick');
+  }
+
   render() {
     console.log("===>messages render with props", this.props);
 
@@ -44,6 +54,10 @@ class Messages extends React.PureComponent {
     return (
       <div>
         <Title title="message" />
+        <Button 
+          title="Send Message" 
+          clickHandler={this.handleMessageClick} 
+        />
       </div>
     );
   }
