@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 // import { MemoryRouter as Router } from "react-router";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Header from "./Header";
+// import Header from "./Header";
 import Home from "./Home";
 import About from "./About";
 import Calendar from "./Calendar";
